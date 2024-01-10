@@ -7,16 +7,24 @@ CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
+RESET	= \033[0m
+BOLD	= \033[1m
+RED		= \033[91m
+GREEN	= \033[92m
+
 ${NAME}: ${OBJS}
-	@ar rcs  ${NAME} ${OBJS}
+	@ar rcs ${NAME} ${OBJS}
+	@echo "$(BOLD)$(GREEN)$(NAME)$(RESET)$(BOLD) compiled successfully!$(RESET)"
 
 all: ${NAME}
 
 clean:
-	${RM} ${OBJS}
+	@${RM} ${OBJS}
+	@echo "$(BOLD)$(RED)Objects removed successfully!$(RESET)"
 
 fclean: clean
-	${RM} ${NAME}
+	@${RM} ${NAME}
+	@echo "$(BOLD)$(RED)$(NAME) removed successfully!$(RESET)"
 
 re: fclean all
 
